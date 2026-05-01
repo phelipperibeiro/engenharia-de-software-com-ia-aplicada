@@ -10,6 +10,9 @@ export async function blockedNode(state: GraphState): Promise<Partial<GraphState
     : ''
 
   const permissions = state.user.permissions?.join(', ') ?? 'None'
+  /**
+   * Carrega o template de bloqueio
+   */
   const template = PromptTemplate.fromTemplate(prompts.blocked)
   const blockedMessage = await template.format({
     REASON: guardRailCheck.reason ?? 'Security check failed',

@@ -5,8 +5,8 @@ export async function createTestClient () {
     const transport = new StdioClientTransport({
         command: 'node',
         args: [
-            '--experimental-strip-types',
-            'src/index.ts'
+            '--experimental-strip-types', // remove the types from the code
+            'src/index.ts' // path to the MCP server
         ]
     })
 

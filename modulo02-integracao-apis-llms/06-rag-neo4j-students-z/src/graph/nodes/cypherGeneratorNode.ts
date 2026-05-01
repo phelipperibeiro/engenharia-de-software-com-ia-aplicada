@@ -31,6 +31,7 @@ export function createCypherGeneratorNode(
 
       const stepInfo = getCurrentStepQuestion(state)
       const targetQuestion = stepInfo?.question ?? state.question!
+
       if (stepInfo) {
         const totalSteps = state.subQuestions?.length ?? 0;
         console.log(`🤖 Generating Cypher query for step ${stepInfo.stepNumber}/${totalSteps}: "${targetQuestion}"`);

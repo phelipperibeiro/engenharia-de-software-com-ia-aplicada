@@ -21,18 +21,18 @@ This directory contains the complete observability and monitoring infrastructure
         ┌─────────────┼─────────────┬─────────────┐
         │             │             │             │
         ▼             ▼             ▼             ▼
-   ┌────────┐   ┌────────┐   ┌────────┐   ┌────────┐
-   │ Tempo  │   │  Loki  │   │ Prom   │   │        │
+   ┌────────┐   ┌────────┐   ┌─────────┐   ┌────────┐
+   │ Tempo  │   │  Loki  │   │ Prom    │   │        │
    │(Traces)│   │ (Logs) │   │(Metrics)│   │        │
-   └────────┘   └────────┘   └────────┘   └────────┘
+   └────────┘   └────────┘   └─────────┘   └────────┘
         │             │             │             │
         └─────────────┴─────────────┴─────────────┘
                       │
                       ▼
-                ┌──────────┐
-                │ Grafana  │
+                ┌───────────┐
+                │ Grafana   │
                 │(Visualize)│
-                └──────────┘
+                └───────────┘
 ```
 
 > **Important Note**: Applications only send telemetry data to the **OpenTelemetry Collector** using OTLP protocol. The collector then distributes this data to the appropriate backend systems (Tempo, Loki, Prometheus) based on the data type.

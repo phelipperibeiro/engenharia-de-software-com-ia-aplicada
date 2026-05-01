@@ -21,7 +21,7 @@ import { createExtractQuestionNode } from './nodes/extractQuestionNode.ts';
 
 const SalesStateAnnotation = z.object({
   // Input
-    messages: withLangGraph(
+  messages: withLangGraph(
       z.custom<BaseMessage[]>(),
       MessagesZodMeta),
   question: z.string().optional(),

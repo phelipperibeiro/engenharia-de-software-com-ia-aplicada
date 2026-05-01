@@ -70,11 +70,15 @@ export class OpenRouterService {
 
     async checkGuardRails(
         userInput: string,
-        enabled: boolean = true) {
+        enabled: boolean = true
+    ) {
         if (!enabled) {
             return { safe: true, reason: 'Guardrails disabled' }
         }
 
+        /**
+         * Carrega o template de guardrails
+         */
         const template = PromptTemplate.fromTemplate(prompts.guardrails)
         const input = await template.format({
             USER_INPUT: userInput,

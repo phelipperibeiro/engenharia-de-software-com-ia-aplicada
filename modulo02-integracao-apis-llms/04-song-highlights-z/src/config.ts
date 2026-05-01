@@ -20,7 +20,7 @@ export type ModelConfig = {
 
 };
 
-console.assert(process.env.OPENROUTER_API_KEY, 'OPENROUTER_API_KEY is not set in environment variables');
+console.assert(process.env.OPENROUTER_API_KEY, 'OPENROUTER_API_KEY não está definida nas variáveis de ambiente');
 
 export const config: ModelConfig = {
   apiKey: process.env.OPENROUTER_API_KEY!,
@@ -31,7 +31,7 @@ export const config: ModelConfig = {
   ],
   provider: {
     sort: {
-      by: 'throughput', // Route to model with highest throughput (fastest response)
+      by: 'throughput', // Roteia para o modelo com maior throughput (resposta mais rápida)
       partition: 'none',
     },
   },

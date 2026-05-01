@@ -23,8 +23,20 @@ async function main(): Promise<void> {
     console.log('═'.repeat(60));
     console.log('\nDigite suas mensagens abaixo. Digite "exit" para sair.\n');
 
+    /**
+     * buildGraph: cria o grafo e as dependências
+     * graph: o grafo compilado
+     * preferencesService: o serviço de preferências
+     */
     const { graph, preferencesService } = await buildGraph();
 
+    /**
+     * parseArgs: parseia os argumentos da linha de comando
+     * userId: o usuário que está conversando
+     * actualUserId: o usuário que está conversando ou 'anonymous' se não for fornecido
+     * threadId: o id da thread da conversa
+     * config: a configuração do grafo
+     */
     const { userId } = parseArgs();
     const actualUserId = userId || 'anonymous';
     const threadId = `${actualUserId}-${Date.now()}`;
@@ -33,19 +45,38 @@ async function main(): Promise<void> {
       context: { userId: actualUserId }
     };
 
+    /**
+     * console.log: imprime o usuário e o id da thread da conversa
+     */
     console.log(`👤 Usuário: ${actualUserId}`);
     console.log(`💬 Thread da Conversa: ${threadId}\n`);
 
+    /**
+     * preferencesService.getBasicInfo: pega as informações básicas do usuário (sqlite)
+     * userContext: as informações básicas do usuário (sqlite)
+     */
     const userContext = await preferencesService.getBasicInfo(actualUserId);
     if (userContext) {
       console.log(`📚 Informações do usuário carregadas:\n${userContext}\n`);
     }
 
     try {
+      /**
+       * initialMessage: a mensagem inicial da conversa
+       * userContext: as informações básicas do usuário (sqlite)
+       * userId: o usuário que está conversando
+       */
       const initialMessage = userContext
         ? 'Inicie a conversa de forma casual mencionando o que você sabe sobre mim e recomende uma música!'
         : 'Olá! Me apresente de forma amigável e pergunte sobre meu nome e preferências musicais.';
 
+      /**
+       * graph.invoke: invoca o grafo
+       * messages: as mensagens da conversa
+       * userContext: as informações básicas do usuário (sqlite)
+       * userId: o usuário que está conversando
+       * config: a configuração do grafo
+       */
       const result = await graph.invoke(
         {
           messages: [new HumanMessage(initialMessage)],
@@ -55,13 +86,31 @@ async function main(): Promise<void> {
         config
       );
 
+      /**
+       * greeting: a resposta da IA
+       * result.messages: as mensagens da conversa
+       * result.messages.length - 1: a última mensagem da conversa
+       */
       const greeting = result.messages[result.messages.length - 1];
+      /**
+       * console.log: imprime a resposta da IA
+       */
       console.log(`AI: ${greeting.content}\n`);
     } catch (error) {
       console.error('❌ Erro ao iniciar conversa:', (error as Error).message);
     }
 
+    /**
+     * while: loop infinito para continuar a conversa
+     * userInput: a mensagem do usuário
+     * if: se a mensagem do usuário for vazia, continua o loop
+     * if: se a mensagem do usuário for 'exit', sai do loop
+     */
     while (true) {
+      /**
+       * userInput: a mensagem do usuário
+       * readline.question: lê a mensagem do usuário
+       */
       const userInput = await readline.question('Você: ');
 
       if (!userInput.trim()) continue;
@@ -71,6 +120,12 @@ async function main(): Promise<void> {
       }
 
       try {
+        /**
+         * graph.invoke: invoca o grafo
+         * messages: as mensagens da conversa
+         * userId: o usuário que está conversando
+         * config: a configuração do grafo
+         */
         const result = await graph.invoke(
           {
             messages: [new HumanMessage(userInput)],
@@ -79,7 +134,15 @@ async function main(): Promise<void> {
           config
         );
 
+        /**
+         * lastMessage: a última mensagem da conversa
+         * result.messages: as mensagens da conversa
+         * result.messages.length - 1: a última mensagem da conversa
+         */
         const lastMessage = result.messages[result.messages.length - 1];
+        /**
+         * console.log: imprime a resposta da IA
+         */
         console.log(`\nAI: ${lastMessage.content}\n`);
 
       } catch (error) {
@@ -91,6 +154,12 @@ async function main(): Promise<void> {
     readline.close();
 
   } catch (error) {
+    /**
+     * console.error: imprime o erro fatal
+     * (error as Error).message: o erro fatal
+     * (error as Error).stack: o stack trace do erro
+     * process.exit: sai do programa
+     */
     console.error('\n❌ Erro fatal:', (error as Error).message);
     console.error('\nStack trace:', (error as Error).stack);
     process.exit(1);

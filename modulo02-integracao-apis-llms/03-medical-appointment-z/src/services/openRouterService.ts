@@ -45,7 +45,7 @@ export class OpenRouterService {
                 new SystemMessage(systemPrompt),
                 new HumanMessage(userPrompt)
             ]
-            const data = await agent.invoke({ messages })
+            const data = await agent.invoke({ messages }) //chama o agente para gerar a resposta
             return {
                 success: true,
                 data: data.structuredResponse,
@@ -54,7 +54,7 @@ export class OpenRouterService {
             console.error('Error OpenRouterService', error)
 
             return {
-                success: true,
+                success: false,
                 error: error instanceof Error ?
                     error.message :
                     String(error),

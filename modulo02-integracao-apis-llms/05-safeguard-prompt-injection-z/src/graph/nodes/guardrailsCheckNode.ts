@@ -8,6 +8,9 @@ export const createGuardrailsCheckNode = (openRouterService: OpenRouterService) 
         try {
 
             const userPrompt = state.messages.at(-1)?.text!
+            /**
+             * Carrega o template de sistema
+             */
             const template = PromptTemplate.fromTemplate(prompts.system)
             // exemplo abaixo é mais inseguro!!
             // const systemPrompt = prompts.system

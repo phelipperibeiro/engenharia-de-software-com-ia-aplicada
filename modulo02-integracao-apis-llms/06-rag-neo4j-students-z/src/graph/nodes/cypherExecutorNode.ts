@@ -62,6 +62,10 @@ function handleMultiStepProgression(state: GraphState, results: any[]) {
 
   const totalSteps = state.subQuestions?.length ?? 0
   console.log(`✅ Step ${multiStepState.currentStep}/${totalSteps} completed`);
+
+  /**
+   * Verifica se há mais passos para executar
+   */
   if (hasMoreSteps({ ...state, ...multiStepState })) {
     console.log(`➡️  Moving to step ${nextStep}...`);
     return multiStepState
@@ -79,6 +83,7 @@ export function createCypherExecutorNode(neo4jService: Neo4jService) {
     try {
 
       const { results, error } = await executeQuery(state.query!, neo4jService)
+
       if (error && results === null) {
 
         if ((state.correctionAttempts ?? 0) < config.maxCorrectionAttempts) {
@@ -95,7 +100,6 @@ export function createCypherExecutorNode(neo4jService: Neo4jService) {
           error: 'Invalid Cypher query - correction failed',
         };
       }
-
 
       if (state.isMultiStep && state.subQuestions?.length && state.currentStep !== undefined) {
         const multiStepState = handleMultiStepProgression(state, results!)

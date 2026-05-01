@@ -27,8 +27,8 @@ async function handleErrorResponse(state: GraphState, llmClient: OpenRouterServi
     answer: data?.answer,
     followUpQuestions: data?.followUpQuestions,
   }
-
 }
+
 async function handleSuccessResponse(state: GraphState, llmClient: OpenRouterService): Promise<Partial<GraphState>> {
   const systemPrompt = getSystemPrompt()
   let _userPrompt: string

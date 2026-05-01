@@ -15,7 +15,7 @@ async function encryptMessage(client: Client, message: string, encryptionKey: st
     return result
 }
 
-async function dencryptMessage(client: Client, encryptedMessage: string, encryptionKey: string) {
+async function decryptMessage(client: Client, encryptedMessage: string, encryptionKey: string) {
     const result = await client.callTool({
         name: 'decrypt_message',
         arguments: {
@@ -51,16 +51,17 @@ describe('MCP Tool Tests', () => {
             'Encrypted message should not be empty'
         )
     })
-    it('should dencrypt a message', async () => {
-         const message = 'Heyyyyy'
-         const key = 'my-super-key'
+
+    it('should decrypt a message', async () => {
+        const message = 'Heyyyyy'
+        const key = 'my-super-key'
         const { structuredContent: { encryptedMessage } } = await encryptMessage(
             client,
             message,
             key,
         )
 
-        const result = await dencryptMessage(client, encryptedMessage, key)
+        const result = await decryptMessage(client, encryptedMessage, key)
         assert.deepStrictEqual(
             result.structuredContent.decryptedMessage,
             message,
@@ -86,12 +87,12 @@ describe('MCP Tool Tests', () => {
 
         const item = result.messages.at(0)?.content as unknown as { text: string}
         const expected = `Please encrypt the following message using the encrypt_message tool.
-Message: Secret text
-Encryption key: my-super-passphrase`
+                            Message: Secret text
+                            Encryption key: my-super-passphrase`
         assert.deepStrictEqual(
-             item.text,
-             expected,
-             'Prompt should be in the correct format'
+            item.text,
+            expected,
+            'Prompt should be in the correct format'
         )
     })
 })

@@ -62,6 +62,22 @@ export function buildChatGraph(
 
     .addEdge('summarize', END);
 
+  /*
+   * Persistência LangGraph (PostgreSQL — ver memoryService.ts)
+   *
+   * checkpointer (PostgresSaver)
+   *   - Salva o ESTADO do grafo a cada passo (checkpoint): messages, flags, etc.
+   *   - Chave: thread_id em config.configurable — mesma thread = mesma conversa retomada
+   *   - É o que faz o histórico de mensagens "voltar" no próximo graph.invoke()
+   *   - Ex.: após chat, o checkpointer grava messages + needsSummarization
+   *
+   * store (PostgresStore)
+   *   - Armazenamento genérico do LangGraph (namespace + chave/valor), separado do checkpoint
+   *   - Pensado para memória de longo prazo / dados extras do framework (não é o SQLite de preferências)
+   *   - Neste projeto o perfil musical fica no PreferencesService (SQLite); o Store fica disponível para APIs do LangGraph que usam store.put/get
+   *
+   * Resumo: checkpointer = snapshot do fluxo por thread | store = cofre extra do LangGraph | preferências = SQLite
+   */
   return graph.compile({
     checkpointer: memoryService.checkpointer,
     store: memoryService.store,
