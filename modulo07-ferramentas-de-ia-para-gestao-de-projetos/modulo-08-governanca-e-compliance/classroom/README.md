@@ -5,6 +5,7 @@ Material de estudo do **Módulo 8 — Governança e Compliance**: checklists din
 | Arquivo | Conteúdo |
 |---------|----------|
 | [governanca-compliance.md](./governanca-compliance.md) | O framework do módulo: checklist de compliance + Danger.js/Python |
+| [o-que-acontece-de-fato.md](./o-que-acontece-de-fato.md) | Passo a passo mecânico: checklist é chat, mas o Danger.js/mock roda código real e determinístico |
 | [resumo.md](./resumo.md) | Resumo da aula, arquivos, fluxo, takeaways |
 | [mapa-mental.md](./mapa-mental.md) | Mapa mental em árvore ASCII |
 

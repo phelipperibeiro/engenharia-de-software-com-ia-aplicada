@@ -5,6 +5,7 @@ Material de estudo do **Módulo 7 — Status Reports com IA**: gerar três relat
 | Arquivo | Conteúdo |
 |---------|----------|
 | [status-report.md](./status-report.md) | O framework do módulo: 3 audiências, restrições por relatório, checklist de curadoria |
+| [o-que-acontece-de-fato.md](./o-que-acontece-de-fato.md) | Passo a passo mecânico: como os 3 relatórios saem de uma única resposta de chat |
 | [resumo.md](./resumo.md) | Resumo da aula, arquivos, fluxo, takeaways |
 | [mapa-mental.md](./mapa-mental.md) | Mapa mental em árvore ASCII |
 

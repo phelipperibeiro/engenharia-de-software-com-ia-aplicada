@@ -5,6 +5,7 @@ Material de estudo do **Módulo 9 — Automação de Ecossistema**: converter me
 | Arquivo | Conteúdo |
 |---------|----------|
 | [nl-to-workflow.md](./nl-to-workflow.md) | O framework do módulo: parser JSON, casos especiais, duas formas de implementar |
+| [o-que-acontece-de-fato.md](./o-que-acontece-de-fato.md) | Passo a passo mecânico: do teste isolado no chat até o bot/automação rodando de verdade em produção |
 | [resumo.md](./resumo.md) | Resumo da aula, arquivos, fluxo, takeaways |
 | [mapa-mental.md](./mapa-mental.md) | Mapa mental em árvore ASCII |
 

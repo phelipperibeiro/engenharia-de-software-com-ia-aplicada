@@ -5,6 +5,7 @@ Material de estudo do **Módulo 6 — Reuniões Turbinadas com IA**: transformar
 | Arquivo | Conteúdo |
 |---------|----------|
 | [meeting-digest.md](./meeting-digest.md) | O framework do módulo: system prompt, ações, decisões implícitas, JSON |
+| [o-que-acontece-de-fato.md](./o-que-acontece-de-fato.md) | Passo a passo mecânico: por que o JSON gerado não vai "sozinho" pro Jira neste módulo |
 | [resumo.md](./resumo.md) | Resumo da aula, arquivos, fluxo, takeaways |
 | [mapa-mental.md](./mapa-mental.md) | Mapa mental em árvore ASCII |
 

@@ -5,6 +5,7 @@ Material de estudo do **Módulo 5 — Riscos e AIOps de Projeto**: monitoramento
 | Arquivo | Conteúdo |
 |---------|----------|
 | [risk-monitor.md](./risk-monitor.md) | O framework do módulo: cockpit de riscos, diagnóstico, mitigação, projeção |
+| [o-que-acontece-de-fato.md](./o-que-acontece-de-fato.md) | Passo a passo mecânico: por que "AIOps" aqui é chat, não um sistema de alerta automatizado |
 | [resumo.md](./resumo.md) | Resumo da aula, arquivos, fluxo, takeaways |
 | [mapa-mental.md](./mapa-mental.md) | Mapa mental em árvore ASCII |
 

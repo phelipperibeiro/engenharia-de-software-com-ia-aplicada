@@ -5,6 +5,7 @@ Material de estudo do **Módulo 3 — Cronograma e Capacidade com IA**: gerar cr
 | Arquivo | Conteúdo |
 |---------|----------|
 | [scheduling.md](./scheduling.md) | O framework do módulo: template de cronograma, capacidade real, what-if |
+| [o-que-acontece-de-fato.md](./o-que-acontece-de-fato.md) | Passo a passo mecânico: o que é chat gerando texto e o que exige conferência manual |
 | [resumo.md](./resumo.md) | Resumo da aula, arquivos, fluxo, takeaways |
 | [mapa-mental.md](./mapa-mental.md) | Mapa mental em árvore ASCII |
 
